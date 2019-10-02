@@ -15,3 +15,23 @@ def open_read_file(file):
     except FileNotFoundError as errmsg:
         print('File cannot be found. Please check your inputs', errmsg)
         raise
+
+def open_read_file_using_with(file):
+    try:
+        with open(file, 'r') as open_file: # Doesn't need close method
+            for line in open_file.readlines():
+                print(line.rstrip('\n'))
+    except FileNotFoundError as errmsg:
+        print('File cannot be found. Please check your inputs', errmsg)
+        # raise
+    finally:
+        print('\n Execution completed')
+
+def write_to_file(file, order_item):
+    try:
+        opened_file = open(file, 'w')
+        opened_file.write(order_item)
+
+        opened_file.close()
+    except FileNotFoundError:
+        print('File not found')
