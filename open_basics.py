@@ -29,9 +29,8 @@ def open_read_file_using_with(file):
 
 def write_to_file(file, order_item):
     try:
-        opened_file = open(file, 'w')
-        opened_file.write(order_item)
+        with open(file, 'a') as opened_file:
+            opened_file.write(order_item + '\n')
 
-        opened_file.close()
     except FileNotFoundError:
         print('File not found')
